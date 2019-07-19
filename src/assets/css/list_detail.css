@@ -1,0 +1,96 @@
+ .container{
+    background-color: #F1F1F1;
+}
+/* 头部 */
+header{
+    padding:  10px 20px;
+    line-height: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+ header i.icon{
+     font-size: 20px;
+}
+.container header .share{
+    font-size: 24px;
+}
+/* 导航 */
+nav{
+    width: 100%;
+    position: relative;
+}
+nav img{
+    width: 100%;
+}
+.bottom{
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    top: -20px;
+}
+.b_left,.b_right{
+    width: 40%;
+    text-align: center;
+    color: #fff;
+    padding: 10px 0;
+    border-radius: 25px;  
+}
+.b_left i,.b_right i{
+  color: #fff;
+}
+/* 渐变的背景 */
+.b_left{
+ 
+  background: linear-gradient( left, #984BFB, #4096FD);
+  background: -webkit-linear-gradient( left, #984BFB, #4096FD);
+}
+.b_right{
+  background: linear-gradient( left, #1EE6B8, #07C1DA);
+  background: -webkit-linear-gradient( left, #1EE6B8, #07C1DA);
+}
+
+/* 活动介绍 */
+.content{
+    background-color: #fff;
+    margin:-10px 15px 0;
+    border-radius: 15px;
+    padding-bottom: 1px;
+}
+.content h4{
+    font-weight: 520;
+    text-align: center;
+    padding-top: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    font-size: 17px;
+}
+.content h4 span{
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 2px;
+    background: linear-gradient( left, #FDD03A, #FD6F1C);
+    background: -webkit-linear-gradient( left, #FDD03A, #FD6F1C);
+    bottom:2px;
+}
+.item .title{
+    color: #F87E56;
+}
+.item .i_content p{  
+   margin: 0px 5px 0px 15px;
+   line-height: 30px;
+   color: #868686;
+   font-size: 14px;
+}
+.item .title span:nth-child(1){
+    margin: 0 10px -3px 0;
+    display: inline-block;
+    width: 3px;
+    height: 17px;
+    background: #F87E56;
+}
+.item{
+    margin-bottom: 20px;
+}

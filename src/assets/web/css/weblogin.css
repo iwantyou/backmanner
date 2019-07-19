@@ -1,0 +1,106 @@
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  @media (min-width: 576px) {
+    .container {
+      max-width: 540px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .container {
+      max-width: 720px;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .container {
+      max-width: 960px;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .container {
+      max-width: 1140px;
+    }
+  }
+.bg-dark {
+    background-color: #343a40 !important;
+    height:100%;
+  }
+  
+  a.bg-dark:hover, a.bg-dark:focus,
+  button.bg-dark:hover,
+  button.bg-dark:focus {
+    background-color: #1d2124 !important;
+  }
+  .card {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+  }
+  .card-login {
+    max-width: 25rem;
+  }
+  .card-body {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+  }
+  .card-header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  }
+  
+  .card-header:first-child {
+    border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+  }
+  .mx-auto {
+    margin-right: auto !important;
+  }
+  .mx-auto {
+    margin-left: auto !important;
+  }
+  .mt-5 {
+  margin-top: 3rem !important;
+}
+.mt-3 {
+  margin-top: 1rem !important;
+}
+.btn-block {
+    display: block;
+    width: 100%;
+  }
+  
+  .btn-block + .btn-block {
+    margin-top: 0.5rem;
+  }
+  
+  input[type="submit"].btn-block,
+  input[type="reset"].btn-block,
+  input[type="button"].btn-block {
+    width: 100%;
+  }
+  .d-block{
+      display:block;
+  }
+  

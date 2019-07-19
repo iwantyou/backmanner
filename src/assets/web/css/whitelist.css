@@ -1,0 +1,25 @@
+.white{
+    padding:20px ;
+    background:#ecf0f5
+}
+.white-content{
+    padding-top:2rem;
+}
+.b-r{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+th{
+    padding:8px;
+}
+td{
+    line-height:3rem!important;
+}
+.table-hea{
+    background:#337ab7;
+    color:#fff;
+    border-radius:5px;
+}
+tbody:hover{
+    background-color:#666;
+}

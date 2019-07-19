@@ -1,0 +1,83 @@
+.rule{
+    padding: 0 20px;
+    height:calc(100% - 150px);
+  }
+  .flex-col{
+    display:flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  .rule-flex-33{
+    max-height:35%;
+    height:35%;
+    width:100%;
+  }
+  .rule-flex-25{
+    max-height:25%;
+    height:25%;
+    width:100%;
+  }
+  .justify-around{
+    justify-content: space-around;
+  }
+  .header{
+    line-height:3rem;
+    border-bottom:3px solid #ccc;
+    width:100%;
+    font-size:120%;
+    color:#000;
+  }
+  .vote-times{
+      padding-top:1.5rem;
+      padding-left:20px;
+  }
+   .times{
+      padding-right:2rem;
+  }
+  .vote-db-block{
+      display:inline-block;
+  }
+  .vote-compu-rule{
+      border-top: 4px solid #ccc;
+      margin-top:10px;
+     padding-top:5px;
+  }
+  .vote-radio{
+      display:inline-block;
+  }
+  .vote-active{
+      background:url('../img/xuanzhong.png');
+  }
+  .radio{
+      margin-top: 15px;
+      margin-bottom: 15px;
+  }
+  .vote-unactive{
+      background:url('../img/weixuanzhong.png');
+  }
+  .common{
+      display:inline-block;
+      width:18px;
+      height:18px;
+      background-size:18px 18px;
+      vertical-align: -4px;
+      margin-right:5px;
+  }
+  .card{
+      padding-top: 1.5rem;
+      padding-left: 20px;
+  }
+  .card-fe{
+      margin:2rem 0;
+  }
+  .white{
+      display:inline-block;
+      width:160px;
+  }
+  .save{
+      padding-top:20px;
+  }
+  .save button{
+      width:10%;
+  }
+  
