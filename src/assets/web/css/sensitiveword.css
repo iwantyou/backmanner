@@ -1,14 +1,14 @@
 .sensitive{
-    padding-left: 20px;
+     padding-left: 20px;
      padding-top: 10px;
      padding-right: 20px;
  }
  .sensitive-content{
      padding-top:2rem;
  }
- .b-r{
-     border-top-left-radius: 5px;
-     border-top-right-radius: 5px;
+ table{
+     border-bottom:2px solid #ccc;
+     border-collapse: separate;
  }
  th{
      padding:8px;
@@ -21,6 +21,11 @@
      color:#fff;
      border-radius:5px;
  }
- tbody:hover{
-     background-color:#666;
+ .table-hea th:first-of-type{
+     border-top-left-radius:5px;
+ }
+ .table-hea th:last-of-type{
+     border-top-right-radius:5px;
+     text-align:right;
+     padding-right:34px;
  }

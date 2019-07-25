@@ -28,6 +28,7 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      '@r': resolve('src/webrequest')
     }
   },
   module: {
@@ -68,7 +69,13 @@ module.exports = {
       }
     ]
   },
+  externals:{
+    // "vue":'Vue',
+    // "echarts":'echarts',
+    // "vue-router":'Router',
+    // 'axios':'axios'
 
+  },
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue
     // source contains it (although only uses it if it's native).

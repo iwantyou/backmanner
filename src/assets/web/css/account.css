@@ -10,7 +10,7 @@
       height:calc(100% - 200px)
   }
   .list .list-item{
-      height:25%;
+      height:15rem;
       border-top:4px solid #ccc;
       padding:10px 0;
   }
@@ -21,13 +21,13 @@
    float:left;
    width:10rem;
    min-height:0;
-   height:95%;
+   /* height:95%; */
   }
   .content-right{
       position:relative;
       padding-left:12rem;
       height:100%;
-  
+
   }
   .small{
       color:#666;

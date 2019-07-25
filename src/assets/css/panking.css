@@ -1,19 +1,6 @@
 .container{
     background-color: #F1F1F1;
 }
-/* 头部 */
-header{
-    padding:  10px 20px;
-    line-height: 30px;
-    display: flex;
-    justify-content: space-between;
-}
- header i.icon{
-     font-size: 20px;
-}
-.container header .share{
-    font-size: 24px;
-}
 /* 导航 */
 nav{
     width: 100%;
@@ -23,132 +10,14 @@ nav img{
     width: 100%;
 }
 nav .rule{
-    width: 80px;
+    width: 7rem;
     padding: 3px;
     color:#fff;
     position: absolute;
     right: 0;
-    top: 10px;
+    top: 1rem;
     background-color:rgba(0,0,0,0.6);
     text-align: center;
-    font-size: 14px;
-    border-radius: 20px 0 0 20px;
-}
-/* 投票排行榜 */
-.content{
-     position: relative;  
-    margin:-20px 20px 20px;
-  border-radius: 15px;
-    background-color: #F2F2F2;
-    
-}
-.content h4{
-    font-size: 20px;
-    text-align: center;
-    padding-top: 15px;
-    padding-bottom: 20px;
-    position: relative;
-    background-color: #fff;
-    border-radius: 15px 15px 0 0;
-}
-.content h4 span{
-    display: block;
-    margin: auto;
-    width: 60px;
-    height: 2px;
-    background: linear-gradient( left, #FDD03A, #FD6F1C);
-}
-.i_content{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding-top: 5px;
-}
-.i_content .item{
-    position: relative;
-    width: 48%;
-    background-color: #FEFEFE;
-    margin-bottom: 10px;
-    border-radius: 3px;
-    height: 200px;
-}
-.i_content .item .i_top{
-    padding: 5px;
-}
-.i_top img{
-    width: 100%;
-    height: 120px; 
-}
-.i_bottom{
-    padding: 5px;
-    width: 80%;
-    position: absolute;
-    border-radius: 10px;
-    left:50%;
-    top: 110px;
-    transform: translateX(-50%);
-    background-color: #fff;
-    text-align: center;
-    font-size: 14px;
-    
-}
-.i_bottom p{
-   margin-bottom: 5px;
-}
-.i_bottom p i{
-    color:#FD7135;
-    margin-right: 3px;
- }
-.xin{
-    margin-right: 2px;
-}
- button{
-     border-radius: 20px;
-     box-shadow: none;
-     border:none;
-     background: linear-gradient( left, #FFD63E, #FF6E1F);
-     background: -webkit-linear-gradient( left, #FFD63E, #FF6E1F);
-     padding: 3px 10px;
-     color: #fff;
-     font-size: 14px;
- }
- button.yizan{
-    background: linear-gradient( left, #BABABA, #919191);
-    background: -webkit-linear-gradient( left,#BABABA, #919191);
-    padding: 3px 20px;
- }
- .item .wangguan{
-     position: absolute;
-     left: 0;
-     top: 0;
-     font-size: 30px;
-     color: #FCC642;
- }
-  /* 以上是第一名的颜色 */
- .num{
-     position: absolute;
-     left: 11px;
-     top: 8px;
-     color: #fff;
-     transform: rotate(-45deg);
-     font-size: 14px;
- }
-
- .item .wangguan1{
-    color: #80B1DE;
-}
-/* 第二名的颜色 */
-.item .wangguan2{
-    color: #F7A15E;
-}
-/* 第三名的颜色 */
-.num1{
-    position: absolute;
-    left: 5px;top: 5px;
-    width: 16px;
-    height: 16px;
-    display: block;
-    text-align: center;
-    color: #fff;
-    background-color: #FEAC31;
+    font-size: 1.4rem;
+    border-radius: 2rem 0 0 2rem;
 }

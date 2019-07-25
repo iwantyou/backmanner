@@ -1,22 +1,8 @@
 .container{
-    background-color: #F9F9F9;
-}
-/* 头部 */
-header{
-    padding:  10px 20px;
-    line-height: 30px;
-    display: flex;
-    justify-content: space-between;
-    box-sizing: border-box;
-}
- header i.icon{
-     font-size: 20px;
-}
-.container header .share{
-    font-size: 24px;
+    /* background-color: #F9F9F9; */
 }
 nav{
-    padding: 5px 10px 3px 20px;
+    padding: 0.5rem 1rem 0.3rem 1.5rem;
     width: 100%;
     background-color: #F8BF4C;
     display: flex;
@@ -25,8 +11,8 @@ nav{
 }
 nav .tip{
    color: #fff;
-   margin-left: 20px;
-   font-size: 14px;
+   margin-left: 2rem;
+   font-size: 1.4rem;
 }
 nav img{
   width: 12%;
@@ -36,24 +22,24 @@ nav img{
 }
 /* form */
 form{
-    padding-top: 5px;
-    font-size: 14px;
+    padding-top: 0.5rem;
+    font-size: 1.4rem;
 }
 .item{
     margin:0 auto;
-    padding: 0px 20px;
+    padding: 0px 2rem;
 }
 .item:nth-child(4){
-   height: 100px;
+   /* height: 100px; */
 }
 .item:nth-child(5){
-    height: 140px;
+    /* height: 140px; */
  }
 .item p{
-    margin:5px 0;
+    margin:0.5rem 0;
 }
 .item input,.item textarea{
-    padding: 8px 5px;
+    padding: 0.8rem 0.5rem;
     width: 100%;
     margin: auto;
     background-color: #E9E9E9;
@@ -80,21 +66,58 @@ form{
     float:left;
     width: 100%;
   }
+  #imgadd{
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+  }
+  #imgadd .pic{
+    position: relative;
+    width: 32%;
+    margin-top: 0.5rem;
+    margin-right: 0.3rem;
+}
+#imgadd .pic:nth-child(3n){
+  margin-right: 0;
+}
+
+
+#imgadd .pic img{
+    height: 7.5rem;
+    width: 100%;
+}
+  #imgadd  .pic .del{
+      width: 20%;
+      height: 25%;
+      position: absolute;
+      top: -0.5rem;
+      left: -0.5rem;
+
+  }
+  #imgadd{
+      display: flex;
+      justify-content: flex-start;
+  }
   #x,#y{
     position:absolute;
     clip:rect(0 0 0 0);
     width: 0px;
-    height: 0px
+    height: 0px;
   }
   #pic{
-    width: 33%;
-    height: 80px;
-   
+    width: 32%;
+    margin-top: 0.5rem;
+    margin-right: 0.3rem;
+    margin-bottom: 0.5rem;
+    height: 7.5rem;  
     position: relative;
+  }
+  label img{
+      width: 33%;
   }
   #videoImg{
      width: 100%;
-     height: 120px;
+     height: 9rem;
   }
   #pic,#videoImg{
     background-color: #E9E9E9;
@@ -106,8 +129,8 @@ form{
    position: relative;
  }
  #videoImg .top p,#pic p{
-   width: 30px;
-   height: 4px;
+   width: 3rem;
+   height: 0.3rem;
    background-color: #FEFEFE;
    position: absolute;
    left: 50%;
@@ -119,8 +142,8 @@ form{
       transform: translate(-50%,-50%);
   }
   #videoImg .top p:nth-child(2),#pic p:nth-child(2){
-     width: 4px;
-     height: 30px;
+     width: 0.3rem;
+     height: 3rem;
      transform: translate(-50%,-50%);
    }
    #videoImg .bottom{
@@ -134,13 +157,19 @@ form{
     border-radius: 20px;
     display: block;
     border:none;
-    padding: 5px 20px;
+    padding: 0.4rem 2rem;
     color: #fff;
 }
 .submit{
     width: 70%;
-    margin: 20px auto;
+    margin: 2rem auto;
     background: linear-gradient( left, #FDD03A, #FD6F1C);
+    background: -webkit-linear-gradient( left, #FDD03A, #FD6F1C);
+}
+video{
+    width: 100%;
+    /* height: 120px; */
+    object-fit: fill;
 }
 
 /* 弹出框 */
@@ -155,7 +184,7 @@ form{
 .alert_content{
     position: relative;
     width: 70%;
-    height: 200px;
+    padding-bottom: 2rem;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
@@ -166,8 +195,8 @@ form{
 }
 .alert h5{
     text-align: center;
-    font-size: 18px;
-    padding-top: 20px;
+    font-size: 1.8rem;
+    padding-top: 2rem;
     position: relative;
 }
 .alert h5 span{
@@ -175,41 +204,42 @@ form{
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    width: 70px;
+    width: 6rem;
     height: 2px;
     background: linear-gradient( left, #FDD03A, #FD6F1C);
     background: -webkit-linear-gradient( left, #FDD03A, #FD6F1C);
     bottom:2px;
 }
 .a_center{
-    margin: 20px;
+    margin: 2rem;
     display: flex;
     justify-content: flex-start;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
 }
 .a_center p{
-    line-height: 25px;
+    line-height: 2.5rem;
+    font-size: 1.6rem;
 }
 .a_center .dui{
     color: #7DD124;
-    font-size: 40px;
+    font-size: 4rem;
     font-weight: 600;
-    margin-right: 10px;
+    margin-right: 1rem;
 }
 .confirm{
     background-color: #FF9B2B;
-    padding: 5px 50px;
+    padding: 0.5rem 5rem;
     box-sizing: border-box;
-    margin: 30px auto 0;
+    margin: 3rem auto 0;
 }
 .close{
-    width: 30px;
+    width: 3rem;
     color:#888;
-    font-size: 34px;
+    font-size: 3.4rem;
     position: absolute;
-    right: -15px;
-    top: -15px;
+    right: -1.3rem;
+    top: -1.3rem;
     border-radius: 50%;
     background-color: #fff;   
     border:1px solid #888;

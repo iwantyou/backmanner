@@ -1,19 +1,20 @@
 # my-project
 
-> back-stage management
+> A Vue.js project
+
 ## Build Setup
 
 ``` bash
-# install dependencies  安装依赖
+# install dependencies
 npm install
 
-# serve with hot reload at localhost:8080  运行在本地8080端口
+# serve with hot reload at localhost:8080
 npm run dev
 
-# build for production with minification    生产
+# build for production with minification
 npm run build
 
-# build for production and view the bundle analyzer report  代码分析
+# build for production and view the bundle analyzer report
 npm run build --report
 ```
 

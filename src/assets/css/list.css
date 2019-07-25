@@ -1,16 +1,4 @@
-/* 头部 */
-header{
-    padding:  10px 20px;
-    line-height: 30px;
-    display: flex;
-    justify-content: space-between;
-}
- header i.icon{
-     font-size: 20px;
-}
-.container header .share{
-    font-size: 24px;
-}
+
 /* 导航 */
 nav{
     width: 100%;
@@ -23,13 +11,13 @@ nav img{
 .content{
     background-color: #efefef;
     width: 100%;
-    padding: 10px;
+    padding: 0.8rem;
 }
 .content .item{
     background-color: #fff;
-    padding: 10px;
+    padding: 0.9rem;
     border-radius: 6px;
-    margin:0 auto 10px;
+    margin:0 auto 1rem;
     position: relative;
 }
 .content .item img{
@@ -38,27 +26,27 @@ nav img{
 .content .item .bottom{
    background-color: #fff;
    margin: auto;
-   padding: 5px 0 0;
+   padding: 0.5rem 0 0;
    display: flex;
    justify-content: space-between;  
    color: #868686; 
    border-radius: 4px;
 }
 .bottom .b_left{
-    font-size: 16px;
+    font-size: 1.6rem;
 }
 .bottom .b_left .time{
-    font-size: 12px;
-    margin-top: 5px;
+    font-size: 1.2rem;
+    margin-top: 0.4rem;
     color: #9C9C9C;
 }
 .bottom .b_right{
-    font-size: 16px;
+   font-size: 1.6rem;
     color: #FC5D07;
     display: flex;
     align-items: center;
 }
 /* 查看活动 */
 .more{
-    font-size: 24px;
+    font-size: 2.4rem;
 }

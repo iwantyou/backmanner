@@ -34,6 +34,10 @@
    .times{
       padding-right:2rem;
   }
+  .whiteset{
+      width:190px;
+      display:inline-block;
+  }
   .vote-db-block{
       display:inline-block;
   }
@@ -76,8 +80,8 @@
   }
   .save{
       padding-top:20px;
+      padding-bottom:20px;
   }
   .save button{
       width:10%;
   }
-  

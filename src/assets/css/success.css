@@ -1,0 +1,68 @@
+
+.container{
+    width: 100%;
+    background:url('../img/success/bg.png') no-repeat top center;
+    background-size: 100% 100%;
+}
+header{
+    background-color: #f9f9f9;
+}
+nav{
+   width: 100%;
+   padding:  0 1rem;
+}
+nav .center{
+    width: 100%;
+    background: url('../img/success/smallbg.png') no-repeat top center;
+    background-size: 100% 100%;
+    padding-top: 10%;
+    padding-bottom: 5%;
+    text-align: center;
+}
+.dui{
+    color: #7DD124;
+    font-size: 3.6rem;
+    font-weight: 600;
+}
+.center .thank{
+    font-size: 1.8rem;
+    margin-top: 5%;
+}
+.center .rank{
+    font-size: 1.6rem;
+   
+    margin-top: 10%;
+}
+.center .rank i{
+    color: #FF5C01;
+}
+
+/* 下方我要参与 */
+.content{
+    width: 100%;
+    padding: 6rem 2rem 0;
+}
+.content .thanks{
+    color: #fff;
+    text-indent: 2em;
+    line-height: 2.6rem;
+    margin-bottom: 6rem;
+}
+.content .b_bottom{
+    width: 50%;
+    margin:  0 auto 3rem;
+    text-align: center;
+    color: #fff;
+    padding: 0.7rem 0;
+    border-radius: 25px;  
+    background: linear-gradient( left, #984BFB, #4096FD);
+    background: -webkit-linear-gradient( left, #984BFB, #4096FD);
+}
+.content .b_bottom i{
+    color: #fff;
+}
+.content .no-thank{
+    text-align: center;
+    color: #fff;
+    text-decoration: underline;
+}

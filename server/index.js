@@ -9,14 +9,12 @@ var router = require('./router.js')(express.Router());
 
 var app = express();
 var server = require('http').Server(app);
-var io = require('socket.io')(server);
-var socketio = require('./socket.io.js');
-io.on('connection', socketio.connect);
 
 app.use(logger(':date[iso] :method :url :status :response-time ms - :req[content-length] - :res[content-length]'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use('/upload', serveStatic(path.join(__dirname, '../upload')));
 app.use(serveStatic(path.join(__dirname, '../dist')));
 app.use(compression({ filter: shouldCompress }));
 app.use(router);

@@ -1,16 +1,20 @@
-input , textarea {
-    border:none;
-}
 input[type="file"]{
   display:none;
+  background: #ecf0f5;
+}
+textarea{
+  background: #ecf0f5;
+  border:none;
 }
 input[type="text"]{
   line-height:2;
   border:1px solid #ccc;
   width:calc(50% - 25px );
+  background: #ecf0f5;
 }
-.creat{
+.create{
   padding:2rem;
+  background: #ecf0f5;
 }
 .img{
   width:2.5rem;
@@ -24,6 +28,11 @@ input[type="text"]{
 .updownload{
 display:block;
 padding:.5rem 0;
+background:#ecf0f5;
+}
+.updownload label{
+  display:inline-block;
+  cursor:pointer;
 }
 
 .img-add{
@@ -48,7 +57,11 @@ padding-bottom:1rem;
 }
 .input input{
   border:none;
-  width:calc(100% - 10px)
+  width:calc(100% - 10px);
+  background:#ecf0f5;
+}
+.input label{
+  padding-left:10px;
 }
 .input:focus-within {
   box-shadow: 0 0 2px #5BC0DE;
@@ -58,12 +71,16 @@ padding-bottom:1rem;
   height:10rem;
   text-align:center;
   border:1px solid #ccc;
-  background:#fafafa;
+  background:#ecf0f5;
 }
 .db-img-bl{
   margin-top:1.5rem;
   width:2.5rem;
   height:2.5rem;
+}
+.small{
+  font-size:85%;
+  color:#666;
 }
 .drag p{
   padding-top:.5rem;
@@ -78,6 +95,9 @@ padding-bottom:1rem;
   width:40%;
   padding:.5rem 0;
 }
+.acti-time input{
+  padding-left:8px;
+}
 .acti-time input:focus{
 box-shadow: 0 0 2px #5BC0DE;
 }
@@ -87,13 +107,12 @@ box-shadow: 0 0 2px #5BC0DE;
   border:1px solid #ccc;
   padding:.5rem 0 0 .5rem;
   box-sizing: border-box;
-  background:#fafafa;
   margin:1rem 0 .5rem;
+  background:#ecf0f5
 }
 .activi-content textarea{
   width:calc(100% - .5rem);
   height:calc(100% - .5rem);
-  background:#fafafa
 }
 .activi-content:focus-within {
   box-shadow: 0 0 2px #67AFE9;

@@ -1,81 +1,82 @@
-var fs = require('fs');
-var request = require('request');
-var uuidv4 = require('uuid/v4');
-var moment = require('moment');
-function uploadFile(req, res, next) {
-  if (req.method === "POST") {
-    var uploadFile = req.file;
-    if (uploadFile) {
-      upload(uploadFile.path, uploadFile.originalname, function (err, data) {
-        if (!err) {
-          var result = { code: 0, data };
-          res.set({
-            "access-control-allow-origin": "*",
-            "access-control-allow-methods": "GET, POST, OPTIONS",
-            "access-control-allow-headers": "content-type"
-          });
-          res.end(JSON.stringify(result));
-        } else {
-          console.error(err);
-          var result = { code: 1, msg: "上传失败" };
-          res.end(JSON.stringify(result));
-        }
-      });
-    } else {
-      var result = { code: 2, msg: "参数错误" };
-      res.end(JSON.stringify(result));
+const fs = require('fs');
+const path = require('path');
+const request = require('request');
+const uuidv4 = require('uuid/v4');
+const moment = require('moment');
+const crypto = require('crypto');
+const config = require('./config');
+const Crypto = require('./crypto');
+const Qs = require('qs');
+function fileZero(str, length) {
+  if (typeof str == "string") {
+    while (str.length < length) {
+      str = "0" + str;
     }
-  } else if (req.method.toUpperCase() === "OPTIONS") {
-    var origin = (req.headers.origin || "*");
-    res.set({
-      "access-control-allow-origin": origin,
-      "access-control-allow-methods": "GET, POST, PUT, DELETE, OPTIONS",
-      "access-control-allow-headers": "content-type",
-      "access-control-max-age": 10, // Seconds.
-      "content-length": 0
-    });
-    res.status(204).send('No Content');
-    res.end();
+  }
+  return str;
+}
+function str_repeat(input, multiplier) {
+  var y = '';
+  while (true) {
+    if (multiplier & 1) {
+      y += input;
+    }
+    multiplier >>= 1;
+    if (multiplier) {
+      input += input;
+    } else {
+      break;
+    }
+  }
+  return y;
+}
+//加密
+function AesEncode(string, key) {
+  key = fileZero(key, 32);
+  if (typeof key == "string" && key.length == 32) {
+    var cipher = crypto.createCipheriv('aes-256-cbc', key, str_repeat('\0', 16));
+    var crypted = cipher.update(string, 'utf8', 'base64');
+    crypted += cipher.final('base64');
+    return crypted;
   } else {
-    next();
+    return null;
   }
 }
-function upload(filepath, filename, callback) {
-  console.log([filepath, filename]);
-  callback(null, "");
-  // var options = { url: "https://cdn.xidong360.com/upload", timeout: 300000 };
-  // var r = request.post(options, function (err, res, body) {
-  //   console.log(body);
-  //   if (!err) {
-  //     try {
-  //       if (typeof body == "string") body = JSON.parse(body);
-  //       if (body.code == 0) {
-  //         callback(null, body.data);
-  //       }
-  //       else {
-  //         callback(null, "");
-  //       }
-  //     }
-  //     catch (e) {
-  //       console.error(e)
-  //       callback(null, "");
-  //     }
-  //   }
-  //   else {
-  //     console.error(err)
-  //     callback(null, "");
-  //   }
-  // });
-  // var form = r.form();
-  // form.append('name', 'file');
-  // form.append('file', fs.createReadStream(filepath), { filename: filename });
+//解密
+function AesDecode(string, key) {
+  if (typeof key == "string" && key.length == 32) {
+    var decipher = crypto.createDecipheriv('aes-256-cbc', key, str_repeat('\0', 16));
+    var dec = decipher.update(string, 'base64', 'utf8');
+    dec += decipher.final('utf8');
+    return dec;
+  } else {
+    return null;
+  }
+}
+function XD_POST(method, data) {
+  data = AesEncode(JSON.stringify({ nonceStr: makeUUID(), data, method, timestamp: Date.now(), }), config.key);
+  request.post('http://localhost:3000/api.cmb.vote/', { json: { data } }, (err, res, body) => {
+
+  });
 }
 function makeUUID() {
   return uuidv4().replace(/-/g, '');
 }
+function hidePhone(phone) {
+  // console.log({ phone });
+  if (phone && phone.length == 11) {
+    return phone.replace(/^(\d{3})\d{4}(\d{4})$/, "$1****$2");
+  }
+  return '';
+}
+function hideID(idNo) {
+  if (idNo && idNo.length == 18) {
+    return idNo.replace(/^(\d{14}).*$/, "$1****");
+  }
+  return '';
+}
 function isPhone(phone) {
-  var re = /^1[3|4|5|6|7|8|9]\d{9}$/;
-  return re.test(Number(phone));
+  return config.phoneReg.test(Number(phone));
 }
 function isCardID(code) {
   var city = { 11: "北京", 12: "天津", 13: "河北", 14: "山西", 15: "内蒙古", 21: "辽宁", 22: "吉林", 23: "黑龙江", 31: "上海", 32: "江苏", 33: "浙江", 34: "安徽", 35: "福建", 36: "江西", 37: "山东", 41: "河南", 42: "湖北", 43: "湖南", 44: "广东", 45: "广西", 46: "海南", 50: "重庆", 51: "四川", 52: "贵州", 53: "云南", 54: "西藏", 61: "陕西", 62: "甘肃", 63: "青海", 64: "宁夏", 65: "新疆", 71: "台湾", 81: "香港", 82: "澳门" };
@@ -143,4 +144,93 @@ function textToColor(str) {
 function getClientIp(req) {
   return req.headers['x-forwarded-for'] || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
 }
-module.exports = { uploadFile, makeUUID, isPhone, isCardID, getAge, dateTime, textToColor, getClientIp, };
+//密码加密
+/**
+ * @param {*} password 密码
+ * @param {*} salt 数据库salt字段
+ */
+function getPwd(password, salt) {
+  var hash = crypto.createHmac('sha512', config.key);
+  hash.update(md5(password) + salt);
+  return hash.digest('hex');
+}
+//密码比对
+/**
+ * @param {*} password 登录密码
+ * @param {*} salt 数据库salt字段
+ * @param {*} password2 数据库password字段
+ */
+function checkPwd(password, salt, password2) {
+  return getPwd(password, salt) == password2;
+}
+function md5(str) {
+  var hash = crypto.createHash('md5');
+  return hash.update(str).digest('hex');
+}
+function sha1(data) {
+  var hash = crypto.createHash('sha1');
+  return hash.update(data).digest('hex');
+}
+function nowTime() {
+  return Date.now();
+}
+function nowDate() {
+  return new Date();
+}
+function uniqid() {
+  return makeUUID();
+}
+function trim(str) {
+  return str.replace(/\s/g, '');
+}
+function ResObj(data) {
+  return new Promise((resolve, reject) => {
+    resolve(data);
+  });
+}
+function checkUpload({ mimetype, size }) {
+  if (mimetype && config.upload.accepttype.indexOf(mimetype) == -1) {
+    return `不支持的文件类型：${config.upload.accepttext}`;
+  }
+  if (size && size > config.upload.limitsize[mimetype]) {
+    return `超过上传文件大小限制：${config.upload.limittext[mimetype]}`;
+  }
+  return null;
+}
+function nowDateObj() {
+  const now = new Date();
+  const year = dateTime(now, 'YYYY');
+  const month = dateTime(now, 'MM');
+  const day = dateTime(now, 'DD');
+  const hour = dateTime(now, 'HH');
+  const minute = dateTime(now, 'mm');
+  const second = dateTime(now, 'ss');
+  return { year, month, day, hour, minute, second };
+}
+//招行APP传参解密
+function CMBAesDecode(data) {
+  const _crypto = new Crypto('aes-128-ecb', config.cmb_aes_key, "");
+  return _crypto.decrypt(data);
+}
+function CMBAesEncode(data) {
+  const _crypto = new Crypto('aes-128-ecb', config.cmb_aes_key, "");
+  return _crypto.encrypt(data);
+}
+function parseUrl(query) {
+  return Qs.parse(query);
+}
+function makeAvatar() {
+  return 'data:image/png;base64,' + fs.readFileSync(path.join(__dirname, 'assets', 'userlogo.png'), 'base64');
+}
+function stringHtmlBr(content) {
+  if (!content) return content;
+  const re = /\n/g;
+  content = content.replace(re, "<br />");
+  return content;
+}
+// console.log(111, CMBAesDecode('+RVQs371yY7G+xCZ1dgsPw=='));
+console.log(222, CMBAesEncode('UniqueUserID=yangjinlongpk&RealName=杨金龙&MobileNo=15378700683&PersonalID=411082198806190033&Level=LV3'));
+console.log(parseUrl('UniqueUserID=UniqueUserID&RealName=RealName&MobileNo=MobileNo&PersonalID=PersonalID&Level=Level'));
+// XD_POST('cmb/test', { code: 0 });
+// console.log(makeAvatar());
+module.exports = { makeUUID, hidePhone, hideID, isPhone, isCardID, getAge, dateTime, textToColor, getClientIp, getPwd, checkPwd, nowTime, nowDate, uniqid, trim, ResObj, checkUpload, nowDateObj, CMBAesDecode, parseUrl, AesEncode, AesDecode, makeAvatar, stringHtmlBr };

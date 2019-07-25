@@ -1,171 +1,175 @@
 <!-- 规则设置-->
 <template>
-    <div style="height:100%;width:100%;">
-    <div class="rule flex-col justify-around">
-      <div class="base-set rule-flex-33" >
-        <div class="header">基本设置</div>
-        <div class="vote-times">
-            <span class="times">投票次数</span>
-            <div class="dropdown vote-db-block">
-                <button id="dLabel" class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 {{name}}
-                  <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dLabel" @click="show($event)">
-                   <li>每天1次</li>
-                   <li>每天2次</li>
-                   <li>每天5次</li>
-                </ul>
-            </div>
-            <div class="vote-compu-rule">
-                <span class="times" style="vertical-align:top;margin-top:15px;display:inline-block">计算规则</span>
-                <div class="vote-radio">
-                    <div class="radio" v-for="(item, index) in radiodata"  :key="index">
-                        <label @change="value(item.value)">
-                            <i class="vote-active common" v-if="item.value == opt"></i>
-                            <i class="vote-unactive common" v-else></i>
-                         <input type="radio" name="optionsRadios"  :value="item.value" style="display:none;">
-                                 {{item.option}}
-                         </label>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-      </div>
-      <div class="card-set rule-flex-25">
-        <div class="header">卡别设置</div>
-        <div class="card">
-            <div  class="card-fe">
-                <span class="times">普卡客户</span>
-                <div class="dropdown vote-db-block">
-                <button id="dLabel1" class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 {{cardf}}
-                  <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dLabel1"  @click="cardfeature($event)">
-                   <li>每天1次</li>
-                   <li>每天2次</li>
-                   <li>每天3次</li>
-                </ul>
-            </div>
-            </div>
-            <div  class="card-fe">
-                <span class="times">金卡客户</span>
-                <div class="dropdown vote-db-block">
-                <button id="dLabel2" class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 {{cardf1}}
-                  <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dLabel2"   @click="cardfeature1($event)">
-                   <li>每天1次</li>
-                   <li>每天2次</li>
-                   <li>每天3次</li>
-                </ul>
-            </div>
-            </div>
-        </div>
-      </div>
-      <div class="whitelist-set rule-flex-25">
-        <div class="header">白名单设置</div>
-        <div class="card">
-            <div  class="card-fe">
-                <span class="times white">白名单客户5万以上</span>
-                <div class="dropdown vote-db-block">
-                <button id="dLabel2" class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 {{white1}}
-                  <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dLabel2"  @click="whiteword1($event)">
-                   <li>每天1次</li>
-                   <li>每天2次</li>
-                   <li>每天3次</li>
-                </ul>
-            </div>
-            </div>
-            <div  class="card-fe">
-                <span class="times white">白名单客户510万以上</span>
-                <div class="dropdown vote-db-block">
-                <button id="dLabel3" class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 {{white2}}
-                  <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dLabel3"   @click="whiteword2($event)">
-                   <li>每天1次</li>
-                   <li>每天2次</li>
-                   <li>每天3次</li>
-                </ul>
-            </div>
-            </div>
-        </div>
-      </div>
-    </div>
-    <div class="save text-center">
-        <button type="button" class=" btn btn-success">保存</button>
-    </div>
-    </div>
+	<div style="height:100%;width:100%;">
+		<div class="rule flex-col justify-around">
+			<div class="base-set rule-flex-33">
+				<div class="header">基本设置</div>
+				<div class="vote-times">
+					<span class="times">投票次数</span>
+					<div class="dropdown vote-db-block">
+						<button
+							id="dLabel"
+							class="btn btn-default"
+							type="button"
+							data-toggle="dropdown"
+							aria-haspopup="true"
+							aria-expanded="false"
+						>
+							{{rule.count ? rule.count + '次' : '请选择'}}
+							<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dLabel">
+							<li v-for="item in maxcount" :key="item" @click="changeRule(item, 'count')">{{item}}次</li>
+						</ul>
+					</div>
+					<div class="vote-compu-rule">
+						<span class="times" style="vertical-align:top;margin-top:15px;display:inline-block">计算规则</span>
+						<div class="vote-radio">
+							<div class="radio" v-for="(item, index) in ratedata" :key="index">
+								<label @change="changeRule(item.value, 'rate')">
+									<i class="vote-active common" v-if="item.value == (rule.rate || ratedata[0].value)"></i>
+									<i class="vote-unactive common" v-else></i>
+									<input type="radio" name="rate" :value="item.value" style="display:none;" />
+									{{item.option}}
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card-set rule-flex-25">
+				<div class="header">卡别设置</div>
+				<div class="card">
+					<div class="card-fe" v-for="(item, index) in carddata" :key="index">
+						<div class="times" style="display:inline-block;min-width:110px;">{{item.name}}</div>
+						<div class="dropdown vote-db-block">
+							<button
+								id="dLabel1"
+								class="btn btn-default"
+								type="button"
+								data-toggle="dropdown"
+								aria-haspopup="true"
+								aria-expanded="false"
+							>
+								{{rule[item.id] ? ('投票1次加' + rule[item.id] + '票') : '请选择'}}
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" aria-labelledby="dLabel1">
+								<li
+									v-for="times in item.maxtimes"
+									:key="times"
+									@click="changeRule(times, item.id)"
+								>投票1次加{{times}}票</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="whitelist-set rule-flex-25">
+				<div class="header">白名单设置</div>
+				<div class="card">
+					<div class="card-fe" v-for="(item, index) in whitedata" :key="index">
+						<span class="times whiteset">{{item.name}}</span>
+						<div class="dropdown vote-db-block">
+							<button
+								id="dLabel2"
+								class="btn btn-default"
+								type="button"
+								data-toggle="dropdown"
+								aria-haspopup="true"
+								aria-expanded="false"
+							>
+								{{rule[item.id] ? ('投票1次加' + rule[item.id] + '票') : '请选择'}}
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" aria-labelledby="dLabel2">
+								<li 
+									v-for="times in item.maxtimes"
+									:key="times"
+									@click="changeRule(times, item.id)"
+								>投票1次加{{times}}票</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="save text-center">
+			<button type="button" @click="saveRule()" class="btn btn-success">保存</button>
+		</div>
+	</div>
 </template>
 <script>
+import _ from "underscore";
 export default {
-    name:'webrule',
-    data(){
-        return{
-            name:'请选择',
-            cardf:'请选择',
-            cardf1:'请选择',
-            white1:'请选择',
-            white2:'请选择',
-            cur: 0, // 单选按钮选中的索引
-            radiodata:[
-                {
-                    value:'0',
-                    option:'活动周期内每队每天'
-                },
-                {
-                    value:'1',
-                    option:'活动周期内每天'
-                },
-                {
-                    value:'2',
-                    option:'活动周期内'
-                }
-            ],
-            opt:0, // 单选按钮选中时的value
-            carddata:[
-                {
-                    name:'普卡客户',
-                    select:[1,2,3]
-                },{
-                    name:'金卡客户',
-                    select:[1,2,3]
-                }
-            ]
-        }
-    },
-    methods:{
-        show(e){
-            this.name = e.target.innerText
-        },
-        value(opt){
-            this.opt = opt
-        },
-        cardfeature(e){
-            this.cardf = e.target.innerText
-        },
-        cardfeature1(e){
-            this.cardf1 = e.target.innerText
-        },
-        whiteword1(e){
-            this.white1 = e.target.innerText
-        },
-        whiteword2(e){
-            this.white2 = e.target.innerText
-        }
-
-    }
-}
+	name: "webrule",
+	data() {
+		return {
+			voteId: this.$route.params.voteId,
+			maxcount: 5,
+			ratedata: [
+				{ value: "everyteam+everyday", option: "活动周期内每队每天" },
+				{ value: "everyday", option: "活动周期内每天" },
+				{ value: "total", option: "活动周期内" }
+			],
+			carddata: [
+				{ id: "LV1", name: "普卡客户", maxtimes: 5 },
+				{ id: "LV2", name: "金卡卡湖", maxtimes: 5 },
+				{ id: "LV3", name: "金葵花用户", maxtimes: 5 },
+				{ id: "LV4", name: "钻石卡用户", maxtimes: 5 },
+				{ id: "LV5", name: "私人银行用户", maxtimes: 5 }
+			],
+			whitedata: [
+				{ id: "W5", name: "时点资产5万元以上客户", maxtimes: 5 },
+				{ id: "W10", name: "时点资产10万元以上客户", maxtimes: 5 }
+			],
+			rule: {}
+		};
+	},
+	created() {
+		this.getData();
+	},
+	methods: {
+		changeRule(data, key) {
+			let rule = _.extend({}, this.rule);
+			rule[key] = data;
+			this.rule = rule;
+		},
+		getData() {
+			this.$post("/api/vote/ruleinfo", { voteId: this.voteId })
+				.then(res => {
+					if (res.code == 0) {
+						this.rule = res.data;
+					} else {
+						alert(res.msg);
+					}
+				})
+				.catch(err => {});
+		},
+		saveRule() {
+			console.log(this.rule);
+			this.$post("/api/vote/saverule", { voteId: this.voteId, rule: this.rule }).then(res => {
+				if (res.code == 0) {
+					this.getData();
+				} else {
+					alert(res.msg);
+				}
+			}).catch(err => {})
+		}
+	}
+};
 </script>
 <style scoped>
 @import "../../assets/web/css/rule.css";
+.dropdown-menu li{
+	padding-left:8px;
+	line-height:2;
+	cursor: pointer;
+	color:#666;
+}
+.dropdown-menu li:hover{
+	background-color:#259dff;
+	color:#fff;
+}
 </style>
 

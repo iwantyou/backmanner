@@ -24,10 +24,11 @@
     display:flex;
     flex-wrap: nowrap;
 }
+.list{
+    background:#ecf0f5;
+}
 .list >li{
-  max-height:33%;
-  height:33%;
-  background:#ecf0f5;
+ height:15rem;
 }
 .left{
     max-width:20%;
@@ -49,6 +50,14 @@ video{
 }
 .team p:nth-child(1){
     margin-top:10px;
+}
+.team p:last-child{
+    height:5rem;
+    display:-webkit-box;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:3;
 }
 .imgmove,.sh{
     max-width:30%;

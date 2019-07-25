@@ -31,7 +31,7 @@
   .flex-col{
     display:flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
   }
   .list{
   padding-top:20px;
@@ -41,21 +41,25 @@
       height:100%
   }
   .list-items{
-    /* height:25%; */
-    height:15rem; 
+    height:15rem;
     overflow: hidden;
     border-top:5px solid #ccc;
+    padding:10px 0 15px 0;
   }
   .list-items:last-child{
       border-bottom:5px solid #ccc;
   }
   .db-block{
-    height:10rem;
-    width:10rem;
-    padding:20px 0;
+    height:100%;
+    width:12rem;
+
+
   }
   .fl{
     float:left;
+  }
+  .div{
+    padding-right:1rem
   }
   .content-right .div:first-child:nth-last-child(2){
     max-width:43%;
@@ -85,19 +89,19 @@
     border-radius:5px;
     cursor: pointer;
   }
-  .rig ul li:nth-child(1){
+  .rig ul li.gray{
     background:gray;
     color:#fff;
   }
-  .rig ul li:nth-child(2){
-    background:gray;
+  .rig ul li.orange{
+    background:orange;
     color:#fff;
   }
-  .rig ul li:nth-child(3){
+  .rig ul li.green{
     background:green;
     color:#fff;
   }
-  .rig ul li:nth-child(4){
+  .rig ul li.red{
     background:red;
     color:#fff;
   }
